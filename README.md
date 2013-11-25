@@ -10,9 +10,6 @@ write local tests for an API.
 
     ``` npm install braque-swagger ```
 
-### Usage
-
-
 ### CLI
 From the command line a route file can be created using the following
 
