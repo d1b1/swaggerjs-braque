@@ -104,9 +104,9 @@ _makeName = function(name) {
   var name = name.replace('.', '');
   name = name.toLowerCase().split('/').join('-');
   name = name.toLowerCase().split(' ').join('-');
+  name = name.toLowerCase().split("'").join('');
 
   return name.replace('.', '');
-
 }
 
 // Simple helper to convert the Swagger /{id} parameter format
