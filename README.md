@@ -19,6 +19,22 @@ Arguments:
 
 ``` braque-swagger --url http://api.staging.formagg.io --file api.json ````
 
+### Workflows
+There are a number of possible workflows for braque and swaggerjs-braque. 
+
+*** Local API development ***
+During the development of an API, the swaggerjs-braque code can be used
+to dump a swagger.js api-docs resource into a braque formatted file. Using
+braque and mocha, a developer can write tests in the same pattern needed 
+for an external implimentation; authentication etc.
+
+*** Implementation ***
+During the development of a site or project that impliments all or part of an API,
+use this CLI command to regenerate a local route file. Since the route file is tracked
+in git, changes to the API, such as new, deleted or altered endpoints will be
+are easier to manage.
+
+
 ### Background
 This code is designed to work with [braque](https://npmjs.org/package/braque) which provides
 an light weight pattern for abstracting a rest API into a node.js codebase. It removes the
