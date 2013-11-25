@@ -1,9 +1,11 @@
 {
   "name": "swaggerjs-braque",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Builds an API route file using Swagger resources.",
   "main": "index.js",
-  "bin" : { "swaggerjs-braque" : "./index.js" },
+  "bin" : { 
+    "swaggerjs-braque" : "./bin/cli" 
+  },
   "author": "",
   "license": "MIT",
   "repository": {
