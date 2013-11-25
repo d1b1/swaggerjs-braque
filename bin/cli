@@ -101,7 +101,11 @@ var build = function(apis) {
 
 _makeName = function(name) {
 
-  return name.toLowerCase().split(' ').join('-').replace('.', '');
+  var name = name.replace('.', '');
+  name = name.toLowerCase().split('/').join('-');
+  name = name.toLowerCase().split(' ').join('-');
+
+  return name.replace('.', '');
 
 }
 
