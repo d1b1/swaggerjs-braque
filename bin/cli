@@ -71,10 +71,10 @@ var build = function(apis) {
   _.each(apis, function(api) {
       i++
       var name = api.resourcePath.replace('/', '')
-      var methods = []
+      var methods = {} 
       _.each(api.apis, function(o) {
         _.each(o.operations, function(op){
-            methods.push({
+            methods[_makeName(op.summary)] = ({
               url: _makeUrl(o.path),
               method: op.httpMethod,
               params: _makeParams(op.parameters)
@@ -96,6 +96,12 @@ var build = function(apis) {
     // Dump to StdOut when no file provided.
     console.log(JSON.stringify(container, null, 4))
   }
+
+}
+
+_makeName = function(name) {
+
+  return name.toLowerCase().split(' ').join('-');
 
 }
 
