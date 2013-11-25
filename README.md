@@ -22,13 +22,13 @@ Arguments:
 ### Workflows
 There are a number of possible workflows for braque and swaggerjs-braque. 
 
-***Building & Testing an API***
+***Building & Testing an API*** -
 During the development of an API, the swaggerjs-braque code can be used
 to dump a swagger.js api-docs resource into a braque formatted file. Using
 braque and mocha, a developer can write tests in the same pattern needed 
 for an external implimentation; authentication etc.
 
-***Implementation***
+***Implementation*** -
 During the development of a site or project that impliments all or part of an API,
 use this CLI command to regenerate a local route file. Since the route file is tracked
 in git, changes to the API, such as new, deleted or altered endpoints will be
