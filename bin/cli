@@ -29,7 +29,8 @@ request(baseurl, function (error, response, body) {
     g = j.apis;
 
     async.forEach(j.apis, function(o, cb) {
-       var u = (j.basePath == '/' ? argv.url : j.basePath) + o.path.replace(argv.path, '')
+       var u = (j.basePath == '/' ? argv.url : j.basePath).replace(argv.path, '') + o.path
+
        request(u, function (error, response, body) {
          try {
             apis.push(JSON.parse(body))
@@ -111,7 +112,7 @@ _makeUrl = function(path) {
     p = p + c
   })
 
-  return p
+  return argv.path + p
 }
 
 // Simple helper to loop the parameters and
