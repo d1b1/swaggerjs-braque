@@ -76,7 +76,7 @@ var build = function(apis) {
       var methods = {} 
       _.each(api.apis, function(o) {
         _.each(o.operations, function(op){
-            methods[_makeName(argv.method)] = ({
+            methods[_makeName(op[argv.method])] = ({
               url: _makeUrl(o.path),
               method: op.httpMethod,
               params: _makeParams(op.parameters)

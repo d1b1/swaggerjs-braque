@@ -1,6 +1,6 @@
 {
   "name": "swaggerjs-braque",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Builds an API route file using Swagger resources.",
   "main": "./bin/cli",
   "bin" : { 
