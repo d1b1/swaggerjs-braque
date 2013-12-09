@@ -14,6 +14,8 @@ var argv = require('optimist')
     .alias('u', 'url').describe('u', 'Resource URL')
     .alias('f', 'file').describe('f', 'Output file')
     .alias('p', 'path').describe('p', 'Optional URL Path')
+    .alias('m', 'method').describe('p', 'Swagger fields to use for methods (defaults to nickname)')
+    .default('m', 'nickname')
     .alias('d', 'debug').describe('d', 'Debug')
     .argv
 ;
@@ -74,7 +76,7 @@ var build = function(apis) {
       var methods = {} 
       _.each(api.apis, function(o) {
         _.each(o.operations, function(op){
-            methods[_makeName(op.summary)] = ({
+            methods[_makeName(argv.method)] = ({
               url: _makeUrl(o.path),
               method: op.httpMethod,
               params: _makeParams(op.parameters)
@@ -122,7 +124,7 @@ _makeUrl = function(path) {
     p = p + c
   })
 
-  return argv.path + p
+  return (argv.path || '') + p
 }
 
 // Simple helper to loop the parameters and
