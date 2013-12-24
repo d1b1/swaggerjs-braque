@@ -20,11 +20,12 @@ var argv = require('optimist')
     .argv
 ;
 
-var baseurl = argv.url + '/api-docs'
+var baseurl = argv.url + (argv.path || '') + '/api-docs'
 var g = []
 
 // Request the Swagger Route api-docs file.
 request(baseurl, function (error, response, body) {
+
   if (!error && response.statusCode == 200) {
     var j = JSON.parse(body)
     var apis = []
@@ -33,6 +34,8 @@ request(baseurl, function (error, response, body) {
     async.forEach(j.apis, function(o, cb) {
        var u = (j.basePath == '/' ? argv.url : j.basePath).replace(argv.path, '') + o.path
 
+       console.log('Parsing Group:',u)
+       
        request(u, function (error, response, body) {
          try {
             apis.push(JSON.parse(body))
@@ -44,6 +47,8 @@ request(baseurl, function (error, response, body) {
     }, function(err) {
       build(apis)
     })
+  } else {
+    console.log('Unable to get the swagger api-docs')
   }
 
 })
@@ -52,7 +57,7 @@ var build = function(apis) {
   
   var basePath = url.parse(argv.url)
   var container = {}
-
+  
   container.defines = {
     constants: {
        name: basePath.host,
